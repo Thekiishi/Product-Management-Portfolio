@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="dark">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0E1410">
+<title>Bridgestone Healthcare · Case Study · Moyinoluwa Kemi Idowu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --bg: #0E1410; --surface: #141A16; --surface2: #1C2420;
+  --border: #2A3530; --navy: #3A7BD5; --navy-dim: #1E4A8A;
+  --navy-glow: rgba(58,123,213,0.12); --cream: #E8E4DC;
+  --muted: #7A9090; --text: #C8C4BC; --teal: #4AADA8; --accent: #C4905A;
+}
+body { font-family: 'Outfit', system-ui, sans-serif; background: var(--bg); color: var(--cream); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--navy-dim); border-radius: 2px; }
+#progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--navy), var(--accent)); width: 0%; z-index: 999; transition: width 0.1s linear; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 6%; background: rgba(14,20,16,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); text-decoration: none; }
+.nav-back { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+.nav-back:hover { color: var(--teal); }
+.case-hero { padding: 120px 6% 80px; max-width: 900px; margin: 0 auto; }
+.hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--navy); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+.hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--navy); }
+.case-hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(36px, 5vw, 64px); font-weight: 300; line-height: 1.1; margin-bottom: 16px; }
+.case-hero h1 em { font-style: italic; color: var(--navy); }
+.case-hero .subtitle { font-size: 16px; color: var(--text); margin-bottom: 48px; max-width: 620px; line-height: 1.7; }
+.meta-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 72px; }
+.meta-item { background: var(--surface); padding: 20px 24px; }
+.meta-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
+.meta-value { font-size: 14px; color: var(--cream); font-weight: 400; }
+.case-body { max-width: 900px; margin: 0 auto; padding: 0 6% 100px; }
+.case-section { margin-bottom: 72px; }
+.section-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--navy); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+.section-label::before { content: ''; width: 20px; height: 1px; background: var(--navy); }
+.case-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 3vw, 36px); font-weight: 300; margin-bottom: 20px; line-height: 1.2; }
+.case-section h2 em { font-style: italic; color: var(--navy); }
+.prose { font-size: 15px; color: var(--text); line-height: 1.85; }
+.prose p { margin-bottom: 18px; }
+.prose strong { color: var(--cream); font-weight: 500; }
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 40px 0; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 24px 20px; text-align: center; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400; color: var(--navy); line-height: 1; display: block; margin-bottom: 6px; }
+.stat-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; }
+.callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 3px; padding: 24px 28px; margin: 32px 0; font-size: 15px; color: var(--text); line-height: 1.7; }
+.callout strong { color: var(--cream); font-weight: 500; }
+.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+.info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 24px; }
+.info-card h4 { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--navy); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px; }
+.info-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.info-card li { font-size: 13px; color: var(--text); display: flex; gap: 10px; line-height: 1.6; }
+.info-card li::before { content: '▸'; color: var(--navy); font-size: 10px; flex-shrink: 0; margin-top: 3px; }
+.divider { height: 1px; background: var(--border); margin: 56px 0; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.case-nav { display: flex; justify-content: space-between; align-items: center; padding: 40px 6%; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+.case-nav a { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+.case-nav a:hover { color: var(--teal); }
+@media (max-width: 700px) {
+  .meta-bar { grid-template-columns: 1fr 1fr; }
+  .stat-row { grid-template-columns: 1fr; }
+  .card-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<nav>
+  <a href="pm_index.html" class="nav-logo">MKI · Product</a>
+  <a href="pm_index.html" class="nav-back">← Back to Portfolio</a>
+</nav>
+
+<div class="case-hero">
+  <div class="hero-eyebrow">HealthTech · Operations Coordination · 2023 to 2024</div>
+  <h1>Bridgestone <em>Healthcare System</em></h1>
+  <p class="subtitle">
+    A 12-month remote engagement coordinating daily operations, compliance monitoring, and team
+    accountability for a US-based residential care facility — managed entirely from Nigeria
+    across time zones.
+  </p>
+  <div class="meta-bar">
+    <div class="meta-item"><div class="meta-label">Organisation</div><div class="meta-value">Bridgestone Healthcare System</div></div>
+    <div class="meta-item"><div class="meta-label">Location</div><div class="meta-value">Maryland, USA (Remote)</div></div>
+    <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-value">Jul 2023 to Jun 2024</div></div>
+    <div class="meta-item"><div class="meta-label">My Role</div><div class="meta-value">Project Manager & Operations Coordinator</div></div>
+  </div>
+</div>
+
+<div class="case-body">
+
+  <div class="case-section reveal">
+    <div class="section-label">Overview</div>
+    <h2>Keeping a care facility <em>operationally compliant</em> across time zones</h2>
+    <div class="prose">
+      <p>Bridgestone Healthcare System is a US-based residential care facility operating in Maryland. My engagement was fully remote, coordinating operational delivery from Nigeria across a caregiving team based in the US.</p>
+      <p>The role centred on three things: ensuring the caregiving team maintained compliance with care and operational standards, monitoring day-to-day operational health and addressing gaps as they emerged, and maintaining the documentation and reporting that kept leadership informed and the facility aligned with quality benchmarks.</p>
+      <p>Working across time zones in a care environment required consistent rhythms and reliable communication structures. The work was detail-intensive and demanded that documentation and follow-up happened without gaps, even across an asynchronous setup.</p>
+    </div>
+  </div>
+
+  <div class="stat-row reveal">
+    <div class="stat-card"><span class="stat-num">12</span><span class="stat-label">Months</span></div>
+    <div class="stat-card"><span class="stat-num">100%</span><span class="stat-label">Remote Delivery</span></div>
+    <div class="stat-card"><span class="stat-num">US</span><span class="stat-label">Cross-timezone</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="case-section reveal">
+    <div class="section-label">Scope of Work</div>
+    <h2>What the role <em>actually required</em></h2>
+    <div class="card-grid">
+      <div class="info-card">
+        <h4>Compliance Monitoring</h4>
+        <ul>
+          <li>Monitored caregiving staff adherence to care standards and operational procedures</li>
+          <li>Identified compliance gaps and coordinated corrective actions to maintain service quality</li>
+          <li>Ensured the facility stayed aligned with regulatory and quality benchmarks throughout</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Operational Health</h4>
+        <ul>
+          <li>Monitored day-to-day operational performance across the facility</li>
+          <li>Identified process gaps early and coordinated solutions before escalation</li>
+          <li>Maintained operational continuity across a remote-first team in different time zones</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Documentation</h4>
+        <ul>
+          <li>Produced status reports and operational records to the standard required for a regulated care environment</li>
+          <li>Maintained consistent, audit-ready documentation across the full engagement</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Team Coordination</h4>
+        <ul>
+          <li>Led regular team check-ins to track progress, surface blockers, and maintain delivery accountability</li>
+          <li>Managed communication across a cross-timezone team without real-time overlap</li>
+          <li>Built check-in cadences that kept the team accountable without requiring constant intervention</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="case-section reveal">
+    <div class="section-label">Key Challenges</div>
+    <h2>Remote coordination in a <em>high-stakes environment</em></h2>
+    <div class="callout">
+      <strong>Care environments are unforgiving of coordination gaps.</strong> Unlike a software project where a delay shifts a deadline, gaps in a care setting affect people directly. Managing compliance and operational standards remotely meant building communication structures robust enough to surface issues early, every time — not most of the time.
+    </div>
+    <div class="prose">
+      <p>The primary challenge was managing a caregiving team across a significant time zone difference with no on-site presence. This required check-in cadences and documentation practices that ensured nothing fell through the cracks between sessions, and that the team felt supported and accountable even without a physical manager present.</p>
+      <p>Maintaining documentation to a standard appropriate for a regulated care environment was a second consistent pressure. Status reports and operational records had to be accurate, timely, and formatted in ways that would hold up under scrutiny. Building that discipline into daily practice, not just my own work, was a core part of the role.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="case-section reveal">
+    <div class="section-label">Reflection</div>
+    <h2>What this engagement <em>reinforced</em></h2>
+    <div class="prose">
+      <p>Bridgestone was my most sustained remote coordination engagement and the one that most clearly demonstrated what it takes to maintain accountability and quality without physical presence. In a care facility, the standard is not negotiable. That environment sharpened my approach to documentation, follow-up, and check-in design in ways that have carried into every subsequent role.</p>
+      <p>It also reinforced that the most important PM skill in a remote setting is not task tracking. It is building the conditions under which a team can operate consistently without constant intervention — the rhythms, the templates, the shared expectations that make distance manageable.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="case-nav">
+  <a href="platform_migration_case_study.html">← Platform Migration</a>
+  <a href="urban_coliving_case_study.html">Urban Co-Living →</a>
+</div>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.body.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

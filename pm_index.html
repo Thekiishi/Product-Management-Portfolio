@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="dark">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0E1410">
+<title>Moyinoluwa Kemi Idowu · Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #0E1410;
+  --surface: #141A16;
+  --surface2: #1C2420;
+  --border: #2A3530;
+  --teal: #4AADA8;
+  --teal-dim: #2A6E6A;
+  --teal-glow: rgba(74,173,168,0.12);
+  --cream: #E8E4DC;
+  --muted: #7A9090;
+  --text: #C8C4BC;
+  --accent: #C4905A;
+}
+
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--cream);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--teal-dim); border-radius: 2px; }
+
+/* ── PROGRESS ── */
+#progress {
+  position: fixed; top: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--teal), var(--accent));
+  width: 0%; z-index: 999;
+  transition: width 0.1s linear;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 6%;
+  background: rgba(14,20,16,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--teal); text-decoration: none;
+}
+.nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--muted); text-decoration: none;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--teal); }
+.nav-cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.12em;
+  color: var(--bg); background: var(--teal);
+  padding: 8px 18px; border-radius: 2px;
+  text-decoration: none; text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 120px 6% 80px;
+  gap: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(74,173,168,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--teal); letter-spacing: 0.2em;
+  text-transform: uppercase; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.hero-eyebrow::before {
+  content: ''; display: inline-block;
+  width: 28px; height: 1px; background: var(--teal);
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(44px, 5.5vw, 76px);
+  font-weight: 300; line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--teal);
+}
+
+.hero-sub {
+  font-size: 15px; color: var(--text);
+  max-width: 480px; line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+.hero-sub strong { color: var(--cream); font-weight: 500; }
+
+.hero-actions {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+
+.btn-primary {
+  background: var(--teal); color: var(--bg);
+  padding: 13px 26px; border-radius: 2px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.85; }
+
+.btn-outline {
+  border: 1px solid var(--border); color: var(--muted);
+  padding: 13px 26px; border-radius: 2px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+.hero-stats {
+  display: flex; gap: 32px;
+}
+.stat-item { display: flex; flex-direction: column; }
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px; font-weight: 400;
+  color: var(--teal); line-height: 1;
+}
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.16em;
+  color: var(--muted); text-transform: uppercase; margin-top: 4px;
+}
+
+/* Hero right — feature card */
+.hero-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px;
+  position: relative;
+}
+.hero-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--teal), var(--accent));
+  border-radius: 4px 4px 0 0;
+}
+
+.card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.2em; color: var(--teal);
+  text-transform: uppercase; margin-bottom: 20px;
+}
+
+.pm-pillars {
+  display: flex; flex-direction: column; gap: 14px;
+}
+
+.pillar {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  transition: border-color 0.2s;
+}
+.pillar:hover { border-color: var(--teal-dim); }
+
+.pillar-icon {
+  width: 30px; height: 30px;
+  background: var(--teal-glow);
+  border: 1px solid var(--teal-dim);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0;
+}
+.pillar-text { flex: 1; }
+.pillar-title {
+  font-size: 13px; font-weight: 500; color: var(--cream);
+  margin-bottom: 2px;
+}
+.pillar-desc {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--muted); letter-spacing: 0.05em;
+}
+
+/* ── SECTION SHARED ── */
+section { padding: 90px 6%; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+
+.section-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--teal); letter-spacing: 0.2em;
+  text-transform: uppercase; margin-bottom: 14px;
+  display: flex; align-items: center; gap: 14px;
+}
+.section-eyebrow::before {
+  content: ''; width: 20px; height: 1px; background: var(--teal);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 300; line-height: 1.2;
+  margin-bottom: 16px;
+}
+.section-title em { font-style: italic; color: var(--teal); }
+
+.section-lead {
+  font-size: 15px; color: var(--text);
+  max-width: 580px; line-height: 1.8; margin-bottom: 56px;
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: start;
+}
+.about-body { font-size: 15px; color: var(--text); line-height: 1.85; }
+.about-body p { margin-bottom: 18px; }
+.about-body strong { color: var(--cream); font-weight: 500; }
+
+.about-sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+.tag-group { margin-bottom: 24px; }
+.tag-group-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; color: var(--muted); letter-spacing: 0.18em;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--teal);
+  border: 1px solid var(--teal-dim);
+  padding: 5px 12px; border-radius: 2px;
+  letter-spacing: 0.08em;
+}
+.tag.secondary {
+  color: var(--muted);
+  border-color: var(--border);
+}
+
+.cred-list { display: flex; flex-direction: column; gap: 10px; }
+.cred-item {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13px; color: var(--text);
+}
+.cred-item::before {
+  content: '▸'; color: var(--teal); font-size: 10px; flex-shrink: 0;
+}
+
+/* ── PROJECTS ── */
+.projects-bg { background: var(--surface); }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.25s, border-color 0.25s;
+  text-decoration: none; color: inherit;
+  display: block;
+}
+.project-card:hover { transform: translateY(-4px); border-color: var(--teal-dim); }
+
+.card-accent { height: 3px; }
+.accent-teal { background: linear-gradient(90deg, var(--teal), #6FCFCA); }
+.accent-navy { background: linear-gradient(90deg, #3A7BD5, #5A9BE5); }
+.accent-terra { background: linear-gradient(90deg, #C4905A, #D4AA7A); }
+
+.card-body { padding: 28px; }
+.card-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; color: var(--muted); letter-spacing: 0.18em;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 400;
+  line-height: 1.25; margin-bottom: 12px; color: var(--cream);
+}
+.card-desc {
+  font-size: 13px; color: var(--text);
+  line-height: 1.7; margin-bottom: 20px;
+}
+
+/* PM framing: outcome chips */
+.outcome-chips {
+  display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px;
+}
+.chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.1em;
+  padding: 4px 10px; border-radius: 2px;
+  background: var(--teal-glow);
+  color: var(--teal);
+  border: 1px solid rgba(74,173,168,0.25);
+}
+.chip.navy {
+  background: rgba(58,123,213,0.1);
+  color: #5A9BE5;
+  border-color: rgba(58,123,213,0.25);
+}
+.chip.terra {
+  background: rgba(196,144,90,0.1);
+  color: var(--accent);
+  border-color: rgba(196,144,90,0.25);
+}
+
+.card-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--teal); letter-spacing: 0.12em;
+  text-transform: uppercase; text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+  transition: gap 0.2s;
+}
+.card-link:hover { gap: 12px; }
+
+/* ── PM CAPABILITIES ── */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.capability-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 24px;
+  transition: border-color 0.2s;
+}
+.capability-card:hover { border-color: var(--teal-dim); }
+.cap-icon { font-size: 22px; margin-bottom: 14px; }
+.cap-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 400;
+  color: var(--cream); margin-bottom: 8px;
+}
+.cap-desc { font-size: 13px; color: var(--text); line-height: 1.65; }
+
+/* ── EXPERIENCE ── */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.timeline-item {
+  display: grid;
+  grid-template-columns: 200px 1px 1fr;
+  gap: 0 32px;
+  padding-bottom: 48px;
+  position: relative;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+
+.timeline-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--muted); letter-spacing: 0.12em;
+  text-transform: uppercase; text-align: right;
+  padding-top: 4px;
+  line-height: 1.5;
+}
+
+.timeline-line {
+  background: var(--border);
+  position: relative;
+}
+.timeline-line::before {
+  content: '';
+  position: absolute;
+  top: 6px; left: 50%; transform: translateX(-50%);
+  width: 8px; height: 8px;
+  background: var(--teal);
+  border-radius: 50%;
+  border: 2px solid var(--bg);
+}
+
+.timeline-content { padding-top: 0; }
+.timeline-org {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; color: var(--teal); letter-spacing: 0.18em;
+  text-transform: uppercase; margin-bottom: 4px;
+}
+.timeline-role {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; font-weight: 400; color: var(--cream);
+  margin-bottom: 10px;
+}
+.timeline-body {
+  font-size: 13px; color: var(--text); line-height: 1.7;
+}
+.timeline-body ul { padding-left: 16px; }
+.timeline-body li { margin-bottom: 6px; }
+.timeline-body li::marker { color: var(--teal); }
+.timeline-body strong { color: var(--cream); font-weight: 500; }
+
+/* ── CONTACT ── */
+.contact-bg { background: var(--surface); }
+.contact-inner {
+  max-width: 700px; margin: 0 auto; text-align: center;
+}
+.contact-inner .section-title { margin-bottom: 20px; }
+.contact-inner .section-lead { margin: 0 auto 40px; }
+
+.contact-links {
+  display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+}
+.contact-link {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.12em;
+  color: var(--muted); text-decoration: none;
+  padding: 12px 20px;
+  border: 1px solid var(--border); border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.contact-link:hover { border-color: var(--teal); color: var(--teal); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 28px 6%;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--muted); letter-spacing: 0.1em;
+}
+.footer-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; color: var(--border);
+}
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; gap: 48px; padding-top: 100px; }
+  .hero-card { display: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .capabilities-grid { grid-template-columns: 1fr 1fr; }
+  .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+  .timeline-date { text-align: left; }
+  .timeline-line { display: none; }
+}
+@media (max-width: 600px) {
+  .capabilities-grid { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+}
+</style>
+</head>
+
+<body>
+<div id="progress"></div>
+
+<nav>
+  <a href="#" class="nav-logo">MKI · Product</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#experience">Experience</a></li>
+  </ul>
+  <a href="mailto:moyinidowu@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Product Manager · Open to Remote Roles</div>
+    <h1>
+      Delivering outcomes<br>
+      across <em>product and teams</em>
+    </h1>
+    <p class="hero-sub">
+      I'm <strong>Moyinoluwa Kemi Idowu</strong>, a Project and Product Manager with 5+ years
+      of experience coordinating cross-functional delivery across healthcare, cultural programmes,
+      digital operations, and SaaS. I hold a <strong>Google Project Management Certificate</strong>,
+      a <strong>ProductDive PM certification</strong>, and an MBA in progress. My work sits at the
+      intersection of stakeholder alignment, structured execution, and measurable outcomes.
+    </p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">View Case Studies</a>
+      <a href="#about" class="btn-outline">My Approach</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Yrs experience</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">7</span>
+        <span class="stat-label">Orgs coordinated</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">4</span>
+        <span class="stat-label">Countries</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-card reveal">
+    <div class="card-label">Product Thinking: How I Work</div>
+    <div class="pm-pillars">
+      <div class="pillar">
+        <div class="pillar-icon">🔍</div>
+        <div class="pillar-text">
+          <div class="pillar-title">Discovery & Problem Framing</div>
+          <div class="pillar-desc">User research · stakeholder interviews · opportunity mapping</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🗺️</div>
+        <div class="pillar-text">
+          <div class="pillar-title">Roadmapping & Prioritisation</div>
+          <div class="pillar-desc">RICE / MoSCoW · OKR alignment · backlog management</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🤝</div>
+        <div class="pillar-text">
+          <div class="pillar-title">Cross-functional Delivery</div>
+          <div class="pillar-desc">Eng · design · ops · vendors · exec stakeholders</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">📊</div>
+        <div class="pillar-text">
+          <div class="pillar-title">Metrics & Iteration</div>
+          <div class="pillar-desc">KPI definition · post-launch analysis · feedback loops</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-eyebrow">About</div>
+    <h2 class="section-title">Strategic delivery,<br><em>product thinking</em></h2>
+    <div class="about-grid">
+      <div class="about-body reveal">
+        <p>
+          I bring 5+ years of cross-functional delivery experience across healthcare, cultural
+          heritage, digital operations, and fitness, working remotely across Nigeria, Ghana, the UK,
+          and the US.
+        </p>
+        <p>
+          At <strong>Bridgestone Healthcare</strong>, I coordinated a paper-to-digital workflow
+          transformation, managing facilitator onboarding, milestone tracking, and stakeholder
+          reporting across a remote team. At <strong>Goethe-Institut Nigeria</strong>, I coordinated
+          the PAID programme across 7 partner organisations in 5 countries, managing competing
+          priorities and cross-regional communications simultaneously.
+        </p>
+        <p>
+          On the product side, I completed the <strong>ProductDive Transition into Product
+          Management programme</strong> (Cohort 7, 2022), covering user research, persona building,
+          wireframing, user stories, roadmapping, and Scrum. My capstone is a full product strategy
+          for an <strong>Urban Co-Living platform</strong>, available as a case study below.
+        </p>
+        <p>
+          I'm pursuing an <strong>MBA in Operations Management</strong> at the University of Lagos.
+          My BSc in Estate Management, also from the University of Lagos, gives me a genuine edge
+          in PropTech and construction tech product environments where domain context accelerates
+          time to impact.
+        </p>
+      </div>
+
+      <div class="about-sidebar reveal">
+        <div class="tag-group">
+          <div class="tag-group-label">Product Skills</div>
+          <div class="tags">
+            <span class="tag">User Story Writing</span>
+            <span class="tag">PRD Authoring</span>
+            <span class="tag">Roadmapping</span>
+            <span class="tag">Backlog Grooming</span>
+            <span class="tag">OKR Alignment</span>
+            <span class="tag">A/B Testing Logic</span>
+            <span class="tag">Stakeholder Mapping</span>
+            <span class="tag">Change Management</span>
+          </div>
+        </div>
+        <div class="tag-group">
+          <div class="tag-group-label">Tools</div>
+          <div class="tags">
+            <span class="tag secondary">Jira</span>
+            <span class="tag secondary">Notion</span>
+            <span class="tag secondary">Asana</span>
+            <span class="tag secondary">Figma</span>
+            <span class="tag secondary">Miro</span>
+            <span class="tag secondary">Confluence</span>
+            <span class="tag secondary">Slack</span>
+            <span class="tag secondary">Trello</span>
+          </div>
+        </div>
+        <div class="tag-group">
+          <div class="tag-group-label">Credentials</div>
+          <div class="cred-list">
+            <span class="cred-item">MBA in Operations Management, University of Lagos (in progress)</span>
+            <span class="cred-item">Google Project Management Certificate (2026)</span>
+            <span class="cred-item">ProductDive: Transition into PM, Cohort 7 (2022)</span>
+            <span class="cred-item">BSc Estate Management, University of Lagos (2021)</span>
+          </div>
+        </div>
+        <div class="tag-group">
+          <div class="tag-group-label">Domain Expertise</div>
+          <div class="tags">
+            <span class="tag">HealthTech</span>
+            <span class="tag">PropTech</span>
+            <span class="tag">SaaS</span>
+            <span class="tag">Cultural Programmes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ WORK ═══════════════════════════════ -->
+<section id="work" class="projects-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">Selected Work</div>
+    <h2 class="section-title">Case Studies</h2>
+    <p class="section-lead">
+      Two delivery projects from professional experience and one end-to-end PM capstone,
+      covering discovery, user research, wireframing, and product release planning.
+    </p>
+
+    <div class="projects-grid">
+
+      <!-- Card 1: PAID / Goethe — most recent -->
+      <a href="PAID_case_study_web.html" class="project-card reveal">
+        <div class="card-accent accent-teal"></div>
+        <div class="card-body">
+          <div class="card-eyebrow">Cultural Heritage · Multi-org Programme · 2026</div>
+          <div class="card-title">PAID: Pan-African Cultural Heritage Programme</div>
+          <div class="card-desc">
+            Coordinated programme delivery across 7 organisations in 5 countries for a Pan-African
+            cultural initiative under Goethe-Institut Nigeria. Managed cross-functional stakeholder
+            alignment, milestone tracking, and communications across regions.
+          </div>
+          <div class="outcome-chips">
+            <span class="chip">7 partner orgs</span>
+            <span class="chip">5 countries</span>
+            <span class="chip">End-to-end delivery</span>
+          </div>
+          <span class="card-link">Read case study →</span>
+        </div>
+      </a>
+
+      <!-- Card 2: Platform Migration (BCD) -->
+      <a href="platform_migration_case_study.html" class="project-card reveal">
+        <div class="card-accent accent-navy"></div>
+        <div class="card-body">
+          <div class="card-eyebrow">SaaS · Enterprise Migration · Interview Brief</div>
+          <div class="card-title">Enterprise Platform Migration: End-to-End PM Documentation</div>
+          <div class="card-desc">
+            Produced full project planning documentation for a 50-client SaaS migration brief —
+            stakeholder maps, phased timeline, risk register, and communication framework —
+            for an interview process that resulted in a successful hire. Names changed for confidentiality.
+          </div>
+          <div class="outcome-chips">
+            <span class="chip navy">Risk register</span>
+            <span class="chip navy">Phased rollout plan</span>
+            <span class="chip navy">Stakeholder map</span>
+          </div>
+          <span class="card-link">Read case study →</span>
+        </div>
+      </a>
+
+      <!-- Card 3: Bridgestone -->
+      <a href="bridgestone_case_study.html" class="project-card reveal">
+        <div class="card-accent accent-navy"></div>
+        <div class="card-body">
+          <div class="card-eyebrow">HealthTech · Operations Coordination · 2023 to 2024</div>
+          <div class="card-title">Remote Operations Coordination, Bridgestone Healthcare</div>
+          <div class="card-desc">
+            Coordinated day-to-day operations for a US-based residential care facility from Nigeria,
+            managing caregiving staff compliance, operational standards, and stakeholder reporting
+            across a fully remote, cross-timezone engagement.
+          </div>
+          <div class="outcome-chips">
+            <span class="chip navy">Cross-timezone remote delivery</span>
+            <span class="chip navy">Compliance maintained</span>
+            <span class="chip navy">12-month engagement</span>
+          </div>
+          <span class="card-link">Read case study →</span>
+        </div>
+      </a>
+
+      <!-- Card 3: Urban Co-Living Capstone -->
+      <a href="urban_coliving_case_study.html" class="project-card reveal">
+        <div class="card-accent accent-terra"></div>
+        <div class="card-body">
+          <div class="card-eyebrow">PM Capstone · ProductDive Cohort 7 · 2022</div>
+          <div class="card-title">Urban Co-Living Platform: PM Capstone Project</div>
+          <div class="card-desc">
+            End-to-end product work from the ProductDive PM programme: user interviews with 15
+            participants, personas, wireframes, user stories, success metrics, and a v1.1 product
+            release note covering the full PM process from discovery to launch framing.
+          </div>
+          <div class="outcome-chips">
+            <span class="chip terra">User research</span>
+            <span class="chip terra">Wireframes</span>
+            <span class="chip terra">Release notes</span>
+          </div>
+          <span class="card-link">View capstone →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CAPABILITIES ═══════════════════════════════ -->
+<section id="capabilities">
+  <div class="section-inner">
+    <div class="section-eyebrow">Capabilities</div>
+    <h2 class="section-title">What I bring to a<br><em>product team</em></h2>
+    <p class="section-lead">
+      Shaped across healthcare, cultural programmes, and digital ops, these are the competencies
+      I bring most consistently.
+    </p>
+
+    <div class="capabilities-grid">
+      <div class="capability-card reveal">
+        <div class="cap-icon">🎯</div>
+        <div class="cap-title">Discovery & Validation</div>
+        <div class="cap-desc">
+          Structured discovery through user interviews, stakeholder workshops, and problem framing
+          to ensure the right problem is defined before anything gets built.
+        </div>
+      </div>
+
+      <div class="capability-card reveal">
+        <div class="cap-icon">🗂️</div>
+        <div class="cap-title">Roadmapping & Prioritisation</div>
+        <div class="cap-desc">
+          Translating strategic goals into sequenced, justified roadmaps using frameworks like
+          RICE and MoSCoW, with clear tradeoffs communicated to all stakeholders.
+        </div>
+      </div>
+
+      <div class="capability-card reveal">
+        <div class="cap-icon">🔗</div>
+        <div class="cap-title">Stakeholder Alignment</div>
+        <div class="cap-desc">
+          Proven ability to align diverse and sometimes conflicting stakeholders across multiple
+          organisations, time zones, and seniority levels toward a shared delivery goal.
+        </div>
+      </div>
+
+      <div class="capability-card reveal">
+        <div class="cap-icon">⚙️</div>
+        <div class="cap-title">Cross-functional Delivery</div>
+        <div class="cap-desc">
+          Coordinating fluidly across engineering, design, ops, and external vendors, keeping
+          delivery moving without losing sight of the product goal.
+        </div>
+      </div>
+
+      <div class="capability-card reveal">
+        <div class="cap-icon">📈</div>
+        <div class="cap-title">Metrics & Iteration</div>
+        <div class="cap-desc">
+          Defining success metrics before launch, tracking the right signals after, and feeding
+          findings back into the next iteration cycle rather than just reporting on the last one.
+        </div>
+      </div>
+
+      <div class="capability-card reveal">
+        <div class="cap-icon">🏗️</div>
+        <div class="cap-title">Domain: PropTech & HealthTech</div>
+        <div class="cap-desc">
+          A BSc in Estate Management and hands-on HealthTech delivery experience provide genuine
+          domain fluency in two verticals that benefit significantly from sector-specific knowledge.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ EXPERIENCE ═══════════════════════════════ -->
+<section id="experience" class="projects-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">Experience</div>
+    <h2 class="section-title">Career History</h2>
+    <p class="section-lead" style="margin-bottom:48px;">
+      5+ years across remote and on-site roles in Nigeria, Ghana, the UK, and the US.
+    </p>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Jan 2026 – Feb 2026<br>Lagos, Nigeria</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <div class="timeline-org">Goethe-Institut Nigeria / EUNIC</div>
+          <div class="timeline-role">Programme Communications Coordinator</div>
+          <div class="timeline-body">
+            <ul>
+              <li>Coordinated a Pan-African indigenous skills preservation programme across <strong>7 international partner organisations</strong> spanning 5 countries, managing communications across a 5-member jury, 15+ specialist facilitators, and 24 participants</li>
+              <li>Managed the full facilitator journey post-acceptance: onboarding, session scheduling, contract and invoice processing, travel logistics, and document compliance tracking</li>
+              <li>Built programme coordination infrastructure independently including a facilitator tracking system, participant contact database, and a full email template library</li>
+              <li>Produced status reports for programme leadership and created comprehensive handover documentation upon contract conclusion</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Jan 2026 – Feb 2026<br>Remote, Ghana</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <div class="timeline-org">Tetso Commerce (LOAF Global Co)</div>
+          <div class="timeline-role">Content Manager</div>
+          <div class="timeline-body">
+            <ul>
+              <li>Developed full brand positioning strategy for a diaspora-facing African e-commerce platform targeting the US, UK, and EU</li>
+              <li>Produced complete brand launch package including content strategy, campaign frameworks, content calendar, copy, and design mockups</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Sep 2025 – Dec 2025<br>Remote, Ghana</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <div class="timeline-org">LOAF Global Co</div>
+          <div class="timeline-role">Digital Content Manager</div>
+          <div class="timeline-body">
+            <ul>
+              <li>Managed full project lifecycle for a website redesign and SEO overhaul, coordinating 5+ contributors across content, design, and development</li>
+              <li>Delivered on schedule, achieving <strong>35% improvement in organic search visibility</strong> and 20% increase in website traffic</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Jul 2024 – Present<br>Kent, UK (Remote)</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <div class="timeline-org">Harvesters International Christian Centre</div>
+          <div class="timeline-role">Social Media & Paid Advertising Manager</div>
+          <div class="timeline-body">
+            <ul>
+              <li>Planned and managed multi-platform campaigns across Meta, TikTok, and Eventbrite against church launch milestones</li>
+              <li>Delivered campaigns on a <strong>£600+ budget</strong> that peaked at 200,000+ reach, generated 300+ leads, and contributed to 600+ attendees at the physical church launch</li>
+              <li>Grew online community from 300 to 3,000+ members across digital platforms</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Sep 2024 – Dec 2024<br>UK (Remote)</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <div class="timeline-org">Reers Technology</div>
+          <div class="timeline-role">Brand Strategist</div>
+          <div class="timeline-body">
+            <ul>
+              <li>Delivered brand strategy consultation for a UK-based tech founder, developing a comprehensive personal and company brand framework covering brand voice, content style, storytelling angles, and audience targeting</li>
+              <li>Produced actionable content guidelines enabling independent, consistent execution across platforms</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Jan 2025 – Present<br>Nigeria</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <div class="timeline-org">FitFlex Gym</div>
+          <div class="timeline-role">Operations & Launch Consultant</div>
+          <div class="timeline-body">
+            <ul>
+              <li>Designed and delivered a comprehensive gym launch strategy covering a N1.17M operating budget with breakeven projections, 3 membership tiers, and staffing plan for 6 staff across 2 shifts</li>
+              <li>Established operational SOPs, launch marketing strategy, and digital presence, supporting a launch that grew to <strong>200+ active members</strong> within its first year</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Jul 2023 – Jun 2024<br>Maryland, US (Remote)</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <div class="timeline-org">Bridgestone Healthcare System</div>
+          <div class="timeline-role">Project Manager & Operations Coordinator</div>
+          <div class="timeline-body">
+            <ul>
+              <li>Coordinated day-to-day operations for a US-based residential care facility, ensuring staff compliance with care standards and service delivery requirements</li>
+              <li>Monitored operational health, identified process gaps, and coordinated corrective actions</li>
+              <li>Produced project documentation including status reports and operational records, and led regular team check-ins to track progress and resolve blockers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Oct 2017 – Mar 2023<br>Nigeria</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <div class="timeline-org">Typical Fitness</div>
+          <div class="timeline-role">Business Development Manager</div>
+          <div class="timeline-body">
+            <ul>
+              <li>Co-planned and executed annual large-scale fitness events contributing to N11M+ in combined ticket sales and sponsorship revenue</li>
+              <li>Built and managed a lead generation system producing 100+ weekly leads at 20-30% monthly conversion rate</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
+<section class="contact-bg">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="section-eyebrow" style="justify-content:center;">Let's Talk</div>
+      <h2 class="section-title reveal">Open to <em>remote roles</em></h2>
+      <p class="section-lead reveal">
+        Currently open to remote Product Manager and Associate PM roles. Google PM certified,
+        ProductDive trained, and MBA in progress. Available to teams building products that require
+        structured thinking, clear stakeholder alignment, and reliable delivery.
+      </p>
+      <div class="contact-links reveal">
+        <a href="mailto:moyinidowu@gmail.com" class="contact-link">
+          ✉ moyinidowu@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/moyinoluwaidowu" target="_blank" class="contact-link">
+          ↗ LinkedIn
+        </a>
+        <a href="https://moyinoluwa-idowu.netlify.app" target="_blank" class="contact-link">
+          ↗ PM Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">Moyinoluwa Kemi Idowu · Product Manager · 2026</span>
+  <span class="footer-note">Open to remote roles</span>
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.body.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

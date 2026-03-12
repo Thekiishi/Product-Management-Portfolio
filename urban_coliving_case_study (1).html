@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="dark">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0E1410">
+<title>Urban Co-Living · PM Capstone · Moyinoluwa Kemi Idowu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --bg: #0E1410; --surface: #141A16; --surface2: #1C2420;
+  --border: #2A3530; --terra: #C4905A; --terra-dim: #8A5A2A;
+  --terra-glow: rgba(196,144,90,0.12); --cream: #E8E4DC;
+  --muted: #7A9090; --text: #C8C4BC; --teal: #4AADA8; --accent: #C4905A;
+}
+body { font-family: 'Outfit', system-ui, sans-serif; background: var(--bg); color: var(--cream); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--terra-dim); border-radius: 2px; }
+#progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--terra), var(--teal)); width: 0%; z-index: 999; transition: width 0.1s linear; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 6%; background: rgba(14,20,16,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); text-decoration: none; }
+.nav-back { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+.nav-back:hover { color: var(--teal); }
+
+.case-hero { padding: 120px 6% 80px; max-width: 900px; margin: 0 auto; }
+.hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--terra); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+.hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--terra); }
+.case-hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(36px, 5vw, 64px); font-weight: 300; line-height: 1.1; margin-bottom: 16px; }
+.case-hero h1 em { font-style: italic; color: var(--terra); }
+.case-hero .subtitle { font-size: 16px; color: var(--text); margin-bottom: 48px; max-width: 620px; line-height: 1.7; }
+
+.meta-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 72px; }
+.meta-item { background: var(--surface); padding: 20px 24px; }
+.meta-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
+.meta-value { font-size: 14px; color: var(--cream); font-weight: 400; }
+
+.case-body { max-width: 900px; margin: 0 auto; padding: 0 6% 100px; }
+.case-section { margin-bottom: 72px; }
+.section-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--terra); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+.section-label::before { content: ''; width: 20px; height: 1px; background: var(--terra); }
+.case-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 3vw, 36px); font-weight: 300; margin-bottom: 20px; line-height: 1.2; }
+.case-section h2 em { font-style: italic; color: var(--terra); }
+.prose { font-size: 15px; color: var(--text); line-height: 1.85; }
+.prose p { margin-bottom: 18px; }
+.prose strong { color: var(--cream); font-weight: 500; }
+
+.stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 40px 0; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 24px 20px; text-align: center; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400; color: var(--terra); line-height: 1; display: block; margin-bottom: 6px; }
+.stat-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; }
+
+.callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--terra); border-radius: 3px; padding: 24px 28px; margin: 32px 0; font-size: 15px; color: var(--text); line-height: 1.7; }
+.callout strong { color: var(--cream); font-weight: 500; }
+
+.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+.info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 24px; }
+.info-card h4 { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--terra); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px; }
+.info-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.info-card li { font-size: 13px; color: var(--text); display: flex; gap: 10px; line-height: 1.6; }
+.info-card li::before { content: '▸'; color: var(--terra); font-size: 10px; flex-shrink: 0; margin-top: 3px; }
+
+.persona-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+.persona-card { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 28px; }
+.persona-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--cream); margin-bottom: 4px; }
+.persona-role { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--terra); letter-spacing: 0.12em; margin-bottom: 16px; }
+.persona-section { margin-bottom: 14px; }
+.persona-section h5 { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 6px; }
+.persona-section p { font-size: 13px; color: var(--text); line-height: 1.6; }
+
+.metrics-table { width: 100%; border-collapse: collapse; margin: 32px 0; }
+.metrics-table th { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--terra); letter-spacing: 0.16em; text-transform: uppercase; padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+.metrics-table td { padding: 14px 16px; font-size: 13px; color: var(--text); border-bottom: 1px solid var(--surface2); line-height: 1.5; }
+.metrics-table tr:last-child td { border-bottom: none; }
+
+.release-block { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 28px; margin: 32px 0; }
+.release-block h4 { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--terra); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 16px; }
+.release-block ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.release-block li { font-size: 13px; color: var(--text); display: flex; gap: 10px; line-height: 1.6; }
+.release-block li::before { content: '▸'; color: var(--terra); font-size: 10px; flex-shrink: 0; margin-top: 3px; }
+
+.wireframe-link { display: inline-flex; align-items: center; gap: 10px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--terra); border: 1px solid var(--terra-dim); padding: 12px 20px; border-radius: 2px; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: background 0.2s; margin-top: 16px; }
+.wireframe-link:hover { background: var(--terra-glow); }
+
+.divider { height: 1px; background: var(--border); margin: 56px 0; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.case-nav { display: flex; justify-content: space-between; align-items: center; padding: 40px 6%; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+.case-nav a { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+.case-nav a:hover { color: var(--teal); }
+
+@media (max-width: 700px) {
+  .meta-bar { grid-template-columns: 1fr 1fr; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .card-grid, .persona-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav>
+  <a href="pm_index.html" class="nav-logo">MKI · Product</a>
+  <a href="pm_index.html" class="nav-back">← Back to Portfolio</a>
+</nav>
+
+<div class="case-hero">
+  <div class="hero-eyebrow">PM Capstone · ProductDive Cohort 7 · 2022</div>
+  <h1>Urban <em>Co-Living</em></h1>
+  <p class="subtitle">
+    An end-to-end product management capstone: user research, personas, wireframes,
+    user stories, success metrics, and a v1.1 product release note for a co-living
+    platform targeting urban professionals in Lagos.
+  </p>
+
+  <div class="meta-bar">
+    <div class="meta-item">
+      <div class="meta-label">Programme</div>
+      <div class="meta-value">ProductDive: Transition into PM</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Cohort</div>
+      <div class="meta-value">Cohort 7, 2022</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Type</div>
+      <div class="meta-value">PM Capstone Project</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Domain</div>
+      <div class="meta-value">PropTech / Urban Housing</div>
+    </div>
+  </div>
+</div>
+
+<div class="case-body">
+
+  <!-- OVERVIEW -->
+  <div class="case-section reveal">
+    <div class="section-label">Overview</div>
+    <h2>The problem with finding <em>affordable housing</em> near work</h2>
+    <div class="prose">
+      <p>
+        Urban Co-Living is a web-based platform concept developed as the capstone project for
+        the ProductDive Transition into Product Management programme. The premise came from a
+        real and persistent problem: employees and small business owners in Lagos face a
+        combination of high rent, long commutes, and limited access to verified, affordable
+        housing close to their workplaces.
+      </p>
+      <p>
+        The proposed solution is a platform that helps users find affordable co-living
+        apartments in good environments near their organisations, with a verified user database
+        to ensure residents are paired with like-minded, trustworthy housemates. The capstone
+        covered the full product management process from research to release planning.
+      </p>
+    </div>
+  </div>
+
+  <div class="stat-row reveal">
+    <div class="stat-card">
+      <span class="stat-num">15</span>
+      <span class="stat-label">Users Interviewed</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">2</span>
+      <span class="stat-label">User Personas Built</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">3</span>
+      <span class="stat-label">User Stories Written</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">v1.1</span>
+      <span class="stat-label">Release Note Produced</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- USER RESEARCH -->
+  <div class="case-section reveal">
+    <div class="section-label">User Research</div>
+    <h2>Starting with <em>real conversations</em></h2>
+    <div class="prose">
+      <p>
+        The research phase began with 15 one-on-one user interviews, each approximately 10
+        minutes, with a mix of 6 introverted males and 9 extroverted females. The goal was
+        to understand the real pain points behind the housing search, not to validate a solution
+        that had already been decided.
+      </p>
+    </div>
+
+    <div class="card-grid">
+      <div class="info-card">
+        <h4>Research Questions</h4>
+        <ul>
+          <li>What are the major concerns when renting a living space?</li>
+          <li>What are the major reasons for considering a co-living space?</li>
+          <li>What is your current perception of co-living?</li>
+          <li>What are the pain points of co-living for you?</li>
+          <li>How could those pain points be addressed to make co-living viable?</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Key Findings</h4>
+        <ul>
+          <li>High rent was the primary barrier, not preference for private housing</li>
+          <li>Proximity to work was consistently prioritised over space or privacy</li>
+          <li>Concerns about housemate compatibility were the main hesitation around co-living</li>
+          <li>Most users expressed willingness to consider co-living if safety and vetting were addressed</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>The key insight:</strong> Users were not opposed to co-living. They were opposed to
+      co-living without trust. A verified matching system was not a feature — it was the
+      prerequisite that made the product viable at all.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PERSONAS -->
+  <div class="case-section reveal">
+    <div class="section-label">User Personas</div>
+    <h2>Two distinct users, <em>one platform</em></h2>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-name">Fowler</div>
+        <div class="persona-role">Chiropractor · Age 24 · Lagos · Extrovert</div>
+        <div class="persona-section">
+          <h5>Situation</h5>
+          <p>Recent graduate who just started at a clinic far from home. Exhausted by daily commute and traffic, struggling to find affordable housing in a good environment near her workplace.</p>
+        </div>
+        <div class="persona-section">
+          <h5>Goals</h5>
+          <p>Live close to work. Access public facilities nearby. Find a large, affordable room without the hassle of the full rental market.</p>
+        </div>
+        <div class="persona-section">
+          <h5>Pain Points</h5>
+          <p>Commute fatigue. Cannot find an apartment that fits both her budget and location needs simultaneously.</p>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-name">Uti</div>
+        <div class="persona-role">Project Manager · Age 27 · Lagos · Introvert</div>
+        <div class="persona-section">
+          <h5>Situation</h5>
+          <p>Works at an EdTech startup. Currently lives with family and wants his own space but cannot afford housing in his office environment independently.</p>
+        </div>
+        <div class="persona-section">
+          <h5>Goals</h5>
+          <p>Find affordable housing near work with sufficient security. Minimise cost while retaining his privacy. Avoid shared working spaces.</p>
+        </div>
+        <div class="persona-section">
+          <h5>Pain Points</h5>
+          <p>Uncomfortable in shared working spaces. Frustrated by the gap between what he can afford and what is available near his office.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WIREFRAMES -->
+  <div class="case-section reveal">
+    <div class="section-label">Wireframes</div>
+    <h2>From research to <em>product flows</em></h2>
+    <div class="prose">
+      <p>
+        Wireframes were built in Whimsical, covering the core user flows identified from the
+        research phase: account creation, apartment search by location, profile verification,
+        and the housemate matching process. The flows were designed to make the trust and
+        verification mechanism central and visible, not buried in settings.
+      </p>
+    </div>
+    <a href="https://whimsical.com/urban-co-living-wireframe-4aWAZJHd3EVt2tSJgAU2DW" target="_blank" class="wireframe-link">
+      View Wireframes in Whimsical ↗
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- USER STORIES -->
+  <div class="case-section reveal">
+    <div class="section-label">User Stories</div>
+    <h2>Defining what each user <em>needs to do</em></h2>
+
+    <div class="card-grid">
+      <div class="info-card">
+        <h4>Customer</h4>
+        <ul>
+          <li>"As a potential customer, I want to be able to sign up easily so that I can view apartments."</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Tenant</h4>
+        <ul>
+          <li>"As a tenant, I want to be able to make complaints on the app so that they can be resolved quickly."</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Developer / Internal</h4>
+        <ul>
+          <li>"As a developer, I want to see the amount of engagement on the app so that I can monitor progress."</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Executives</h4>
+        <ul>
+          <li>Executives identified a summary view of each segment of data as their top priority for v1.</li>
+          <li>Secondary admin workflow scoped out of this release.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SUCCESS METRICS -->
+  <div class="case-section reveal">
+    <div class="section-label">Success Metrics</div>
+    <h2>How we would know <em>it was working</em></h2>
+    <div class="prose">
+      <p>
+        Success metrics were defined before launch planning, tied to specific business outcomes
+        and validated at defined time intervals post-launch.
+      </p>
+    </div>
+
+    <table class="metrics-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Validation Timeframe</th>
+          <th>Business Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>50% of visitors who land on the website or download the app go on to create an account</td>
+          <td>1 month post-launch</td>
+          <td>Engagement</td>
+        </tr>
+        <tr>
+          <td>70% of those who sign up enquire about the services offered</td>
+          <td>3 months post-launch</td>
+          <td>Engagement</td>
+        </tr>
+        <tr>
+          <td>80% of those who make an enquiry go on to acquire services</td>
+          <td>6 months post-launch</td>
+          <td>Revenue</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RELEASE NOTE -->
+  <div class="case-section reveal">
+    <div class="section-label">Product Release Note</div>
+    <h2>Urban Co-Living <em>v1.1</em></h2>
+    <div class="prose">
+      <p>
+        The release note documented what shipped in version 1.1, what was fixed, and the
+        intent behind each update in plain language accessible to both technical and
+        non-technical stakeholders.
+      </p>
+    </div>
+
+    <div class="card-grid">
+      <div class="release-block">
+        <h4>New in v1.1</h4>
+        <ul>
+          <li>Saved Search feature</li>
+          <li>Auto-fill forms</li>
+          <li>Report a Problem feature added</li>
+          <li>Set up physical viewing appointments from within the app</li>
+          <li>3D view of listed apartments</li>
+        </ul>
+      </div>
+      <div class="release-block">
+        <h4>Bugs Fixed</h4>
+        <ul>
+          <li>Notification alert feature resolved</li>
+          <li>Awaiting approval period reduced</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- REFLECTION -->
+  <div class="case-section reveal">
+    <div class="section-label">Reflection</div>
+    <h2>What the capstone <em>clarified</em></h2>
+    <div class="prose">
+      <p>
+        The capstone confirmed something the research phase made clear early: the difference
+        between a product idea and a product is a precise understanding of what the user
+        actually needs, not what you assumed they needed before you started. The verification
+        and matching mechanism was not in the original brief. It came directly from the
+        interviews.
+      </p>
+      <p>
+        Writing user stories for three distinct user types also highlighted how differently
+        the same product function reads depending on whose perspective you write from. The
+        tenant's complaint feature and the developer's engagement dashboard are technically
+        related but exist for entirely different reasons. Getting that distinction right before
+        spec writing is the kind of clarity that saves a team significant rework later.
+      </p>
+      <p>
+        This capstone gave me the structured PM vocabulary and process framework to apply
+        to the real delivery work I was already doing. The connection between the two is what
+        this portfolio is built to show.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<div class="case-nav">
+  <a href="bridgestone_case_study.html">← Bridgestone Healthcare</a>
+  <a href="pm_index.html">Back to Portfolio →</a>
+</div>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.body.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

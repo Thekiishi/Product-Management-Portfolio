@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="dark">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0E1410">
+<title>PAID: Roots and Roofs · Case Study · Moyinoluwa Kemi Idowu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --bg: #0E1410; --surface: #141A16; --surface2: #1C2420;
+  --border: #2A3530; --teal: #4AADA8; --teal-dim: #2A6E6A;
+  --teal-glow: rgba(74,173,168,0.12); --cream: #E8E4DC;
+  --muted: #7A9090; --text: #C8C4BC; --accent: #C4905A;
+}
+body { font-family: 'Outfit', system-ui, sans-serif; background: var(--bg); color: var(--cream); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--teal-dim); border-radius: 2px; }
+#progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--teal), var(--accent)); width: 0%; z-index: 999; transition: width 0.1s linear; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 6%; background: rgba(14,20,16,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); text-decoration: none; }
+.nav-back { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; display: flex; align-items: center; gap: 8px; }
+.nav-back:hover { color: var(--teal); }
+
+/* HERO */
+.case-hero { padding: 120px 6% 80px; max-width: 900px; margin: 0 auto; }
+.hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--teal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+.hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--teal); }
+.case-hero h1 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(36px, 5vw, 64px); font-weight: 300; line-height: 1.1; margin-bottom: 16px; }
+.case-hero h1 em { font-style: italic; color: var(--teal); }
+.case-hero .subtitle { font-size: 16px; color: var(--text); margin-bottom: 48px; max-width: 620px; line-height: 1.7; }
+
+/* META BAR */
+.meta-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; margin-bottom: 72px; }
+.meta-item { background: var(--surface); padding: 20px 24px; }
+.meta-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
+.meta-value { font-size: 14px; color: var(--cream); font-weight: 400; }
+
+/* BODY */
+.case-body { max-width: 900px; margin: 0 auto; padding: 0 6% 100px; }
+.case-section { margin-bottom: 72px; }
+.section-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--teal); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+.section-label::before { content: ''; width: 20px; height: 1px; background: var(--teal); }
+.case-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 3vw, 36px); font-weight: 300; margin-bottom: 20px; line-height: 1.2; }
+.case-section h2 em { font-style: italic; color: var(--teal); }
+.prose { font-size: 15px; color: var(--text); line-height: 1.85; }
+.prose p { margin-bottom: 18px; }
+.prose strong { color: var(--cream); font-weight: 500; }
+
+/* STAT ROW */
+.stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 40px 0; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 24px 20px; text-align: center; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 400; color: var(--teal); line-height: 1; display: block; margin-bottom: 6px; }
+.stat-label { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; }
+
+/* CALLOUT */
+.callout { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--teal); border-radius: 3px; padding: 24px 28px; margin: 32px 0; font-size: 15px; color: var(--text); line-height: 1.7; }
+.callout strong { color: var(--cream); font-weight: 500; }
+
+/* GRID CARDS */
+.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+.info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 3px; padding: 24px; }
+.info-card h4 { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--teal); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px; }
+.info-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.info-card li { font-size: 13px; color: var(--text); display: flex; gap: 10px; }
+.info-card li::before { content: '▸'; color: var(--teal); font-size: 10px; flex-shrink: 0; margin-top: 3px; }
+
+/* PROCESS STEPS */
+.process-steps { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+.step { display: grid; grid-template-columns: 48px 1fr; gap: 20px; padding-bottom: 32px; position: relative; }
+.step:last-child { padding-bottom: 0; }
+.step-num { width: 36px; height: 36px; background: var(--teal-glow); border: 1px solid var(--teal-dim); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--teal); flex-shrink: 0; }
+.step-line { position: absolute; left: 17px; top: 36px; bottom: 0; width: 1px; background: var(--border); }
+.step:last-child .step-line { display: none; }
+.step-content h4 { font-size: 15px; font-weight: 500; color: var(--cream); margin-bottom: 6px; }
+.step-content p { font-size: 13px; color: var(--text); line-height: 1.7; }
+
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); margin: 56px 0; }
+
+/* NAV FOOTER */
+.case-nav { display: flex; justify-content: space-between; align-items: center; padding: 40px 6%; border-top: 1px solid var(--border); max-width: 900px; margin: 0 auto; }
+.case-nav a { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+.case-nav a:hover { color: var(--teal); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 700px) {
+  .meta-bar { grid-template-columns: 1fr 1fr; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+  .card-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav>
+  <a href="pm_index.html" class="nav-logo">MKI · Product</a>
+  <a href="pm_index.html" class="nav-back">← Back to Portfolio</a>
+</nav>
+
+<div class="case-hero">
+  <div class="hero-eyebrow">Case Study · Cultural Heritage · 2026</div>
+  <h1>PAID: <em>Roots and Roofs</em></h1>
+  <p class="subtitle">
+    Coordinating a Pan-African indigenous architecture programme across 7 partner organisations,
+    12 steering committee members, a 5-member jury, 15+ facilitators, and 24 young Nigerian
+    creatives spanning Nigeria's six geopolitical zones.
+  </p>
+
+  <div class="meta-bar">
+    <div class="meta-item">
+      <div class="meta-label">Organisation</div>
+      <div class="meta-value">Goethe-Institut Nigeria / EUNIC</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Duration</div>
+      <div class="meta-value">Jan 2026 to Feb 2026</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">My Role</div>
+      <div class="meta-value">Programme Communications Coordinator</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Programme</div>
+      <div class="meta-value">EUNIC Spaces of Culture</div>
+    </div>
+  </div>
+</div>
+
+<div class="case-body">
+
+  <!-- OVERVIEW -->
+  <div class="case-section reveal">
+    <div class="section-label">Overview</div>
+    <h2>Preserving African architecture <em>before it disappears</em></h2>
+    <div class="prose">
+      <p>
+        PAID (Pan-African Indigenous Skills Development Programme) is a training and cultural
+        preservation initiative focused on revitalising African architectural heritage before it
+        is lost to urbanisation and generational disconnect. The 2026 pilot phase, themed
+        <strong>Roots and Roofs</strong>, centred on African-inspired interior and exterior
+        architecture.
+      </p>
+      <p>
+        The programme was delivered by CBAAC (Centre for Black and African Arts and Civilisation)
+        under the EUNIC Spaces of Culture framework, with co-implementing partners including the
+        Goethe-Institut, British Council Nigeria, Irish Embassy Lagos, Spanish Embassy Lagos,
+        the Institute of African and Diaspora Studies (IADS), and the EU Delegation Nigeria.
+      </p>
+      <p>
+        I joined as Programme Communications Coordinator at the start of the pilot phase,
+        responsible for building and managing the coordination infrastructure that connected
+        every layer of the programme from partner organisations to individual participants.
+      </p>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stat-row reveal">
+    <div class="stat-card">
+      <span class="stat-num">7</span>
+      <span class="stat-label">Partner Organisations</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">24</span>
+      <span class="stat-label">Participants Selected</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">15+</span>
+      <span class="stat-label">Facilitators Onboarded</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">6</span>
+      <span class="stat-label">Geopolitical Zones</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PROGRAMME STRUCTURE -->
+  <div class="case-section reveal">
+    <div class="section-label">Programme Structure</div>
+    <h2>A two-stage selection process across <em>a complex stakeholder ecosystem</em></h2>
+    <div class="prose">
+      <p>
+        The programme recruited young Nigerian creatives in paired teams: one architect or
+        designer and one photographer or visual storyteller, with one team selected from each
+        of Nigeria's six geopolitical zones plus the FCT. The selection process ran in two stages.
+      </p>
+    </div>
+
+    <div class="card-grid">
+      <div class="info-card">
+        <h4>Stage 1: Steering Committee</h4>
+        <ul>
+          <li>12 committee members drawn from partner organisations across 6 zones</li>
+          <li>Each zone produced a longlist of applicants for review</li>
+          <li>Members drawn from Goethe-Institut, British Council, Irish Embassy, Spanish Embassy, IADS, National Troupe, CBAAC, and the EU Delegation</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Stage 2: Final Jury</h4>
+        <ul>
+          <li>5-member international jury reviewed shortlisted applications</li>
+          <li>2 independent expert practitioners: Chadrac Agbodjogbe and Otitioluwa Tubi</li>
+          <li>3 Steering Committee representatives: CBAAC, IADS, and Irish Embassy Lagos</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Facilitators</h4>
+        <ul>
+          <li>Approximately 15 confirmed facilitators with onboarded documentation</li>
+          <li>Split across 9 virtual and 6 physical sessions</li>
+          <li>Full programme roster extended to approximately 25 including regional specialists</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Participants</h4>
+        <ul>
+          <li>24 participants selected (12 creative teams of 2)</li>
+          <li>One team per geopolitical zone plus FCT</li>
+          <li>Each team: one architect/designer paired with one photographer/visual storyteller</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MY WORK -->
+  <div class="case-section reveal">
+    <div class="section-label">My Contribution</div>
+    <h2>Building the coordination infrastructure <em>from scratch</em></h2>
+    <div class="prose">
+      <p>
+        The scope of my role extended well beyond communications. I was responsible for designing
+        and running the operational backbone that kept the programme connected across its many
+        moving parts simultaneously.
+      </p>
+    </div>
+
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-line"></div>
+        <div class="step-content">
+          <h4>Coordination Infrastructure</h4>
+          <p>Built independently from scratch: a facilitator tracking system, a participant contact database organised by geopolitical zone, and a full email template library covering every recurring communication type across stakeholder groups.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-line"></div>
+        <div class="step-content">
+          <h4>Facilitator Journey Management</h4>
+          <p>Managed the full facilitator lifecycle from sourcing through to offboarding: onboarding, session scheduling, contract processing, invoice management per Goethe-Institut financial requirements, travel logistics, and document compliance tracking.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-line"></div>
+        <div class="step-content">
+          <h4>Multi-Stakeholder Communications</h4>
+          <p>Maintained distinct and simultaneous communication streams for four stakeholder groups: facilitators, participants, jury members, and partner organisation representatives. Each group required tailored communications at different frequencies and formats.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-line"></div>
+        <div class="step-content">
+          <h4>Reporting and Documentation</h4>
+          <p>Produced status reports for programme leadership throughout the engagement. Created comprehensive handover documentation upon contract conclusion, ensuring full programme continuity with zero information loss for the team continuing delivery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CHALLENGES -->
+  <div class="case-section reveal">
+    <div class="section-label">Key Challenges</div>
+    <h2>What made this <em>genuinely difficult</em></h2>
+
+    <div class="callout">
+      <strong>Stakeholder density at every level.</strong> At any given moment I was managing
+      communications across partner organisations, a 12-person steering committee, a 5-member
+      international jury, 15+ facilitators split across virtual and physical tracks, and 24
+      individual participants spread across six geopolitical zones. Each group had different
+      information needs, response expectations, and communication formats.
+    </div>
+
+    <div class="prose">
+      <p>
+        The programme infrastructure did not exist when I joined. There was no central tracking
+        system, no standardised contact database, and no template library for the recurring
+        communications that a programme of this scale requires. Building those systems while
+        simultaneously running active communications was the defining challenge of the role.
+      </p>
+      <p>
+        Working across partner organisations with different institutional cultures, each with
+        their own internal processes, also required careful calibration. Communications to the
+        Irish Embassy had different expectations than communications to CBAAC or to individual
+        participant teams. Getting that right consistently, at volume, required the template
+        system I built to earn its value.
+      </p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- REFLECTION -->
+  <div class="case-section reveal">
+    <div class="section-label">Reflection</div>
+    <h2>What this project <em>taught me</em></h2>
+    <div class="prose">
+      <p>
+        The PAID programme reinforced something I believe about coordination work at scale: the
+        infrastructure you build before delivery begins determines whether delivery is possible
+        at all. The tracking systems, the templates, the contact databases — none of those are
+        visible in the final output, but without them the communications would have become
+        unmanageable within weeks.
+      </p>
+      <p>
+        This project also clarified how important it is to understand which stakeholder needs
+        accuracy and which needs speed. A jury member and a participant have completely different
+        relationships to the programme and completely different tolerances for ambiguity in
+        communications. Calibrating for that difference at volume is a skill I developed here.
+      </p>
+      <p>
+        The contract concluded on my side before the programme's full delivery. I completed a
+        structured handover that documented every active process, contact, and outstanding item,
+        ensuring the team continuing the work had everything they needed to proceed without
+        disruption.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<div class="case-nav">
+  <a href="pm_index.html">← All Projects</a>
+  <a href="platform_migration_case_study.html">Platform Migration →</a>
+</div>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.body.scrollHeight - window.innerHeight;
+    document.getElementById('progress').style.width = (scrolled / total * 100) + '%';
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) setTimeout(() => entry.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
